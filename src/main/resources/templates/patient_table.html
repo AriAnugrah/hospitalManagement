@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Patients</title>
+</head>
+<body>
+<div align="center">
+    <h1>Patients Records</h1>
+    <a href="/new_patient">Enter New Patients</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Alamat</th>
+            <th>Golongan</th>
+            <th>Umur</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="patients : ${listPatients}">
+            <td th:text="${patients.id}">ID</td>
+            <td th:text="${patients.name}">Name</td>
+            <td th:text="${patients.alamat}">Alamat</td>
+            <td th:text="${patients.golongan}">Golongan</td>
+            <td th:text="${patients.umur}">Gaji</td>
+            <td>
+                <a th:href="@{'/edit_patient/' + ${patients.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete_patient/' + ${patients.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
